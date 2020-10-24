@@ -1,20 +1,20 @@
 version: "3"
 services:
 
-  # user 서비스
-  user:
-    image: user
+  # place 서비스
+  place:
+    image: place
     ports:
-      - "8080:8080"
+      - "8081:8081"
     restart: always
     networks:
       - nearlog-network
 
   # user 서비스
-  place:
-    image: place
+  user:
+    image: user
     ports:
-      - "8081:8081"
+      - "8082:8082"
     restart: always
     networks:
       - nearlog-network
