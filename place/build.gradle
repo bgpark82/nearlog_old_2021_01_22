@@ -35,3 +35,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task buildDocker(type: Exec) {
+    dependsOn build
+    commandLine 'docker','build','.','-t', 'place'
+}
