@@ -1,2 +1,13 @@
 server:
   port: 8082
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://user-db:3307/user?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: password
+
+logging.level.org.hibernate.SQL: debug
+spring.jpa.properties.hibernate.format_sql: true
+spring.jpa.hibernate.ddl-auto: update

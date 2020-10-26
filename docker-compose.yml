@@ -1,6 +1,25 @@
 version: "3"
 services:
 
+  # user 서비스 db
+  user-db:
+    image: mysql:5.7
+    restart: always
+    container_name: user-mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_DATABASE=user
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - nearlog-user-db:/var/lib/mysql
+    networks:
+      - nearlog-network
+
   # place 서비스
   place:
     image: place
@@ -16,8 +35,13 @@ services:
     ports:
       - "8082:8082"
     restart: always
+    depends_on:
+      - user-db
     networks:
       - nearlog-network
 
 networks:
   nearlog-network:
+
+volumes:
+  nearlog-user-db:
