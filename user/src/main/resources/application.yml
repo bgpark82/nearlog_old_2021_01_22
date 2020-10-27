@@ -3,8 +3,8 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://user-db:3307/user?useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db:3306/user?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: password
 
