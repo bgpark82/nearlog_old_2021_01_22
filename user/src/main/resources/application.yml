@@ -27,6 +27,11 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+
+security:
+  oauth2:
+    jwt:
+      signkey: 123@#$
 ---
 
 spring:
