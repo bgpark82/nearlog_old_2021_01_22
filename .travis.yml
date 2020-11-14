@@ -6,10 +6,16 @@ branches:
   only:
     - master
 
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
 before_install:
   - cd place
   - echo ready?
-  - ./gradlew clean build
+
+script: "./gradlew clean build"
 
 deploy:
   provider: s3
@@ -22,3 +28,9 @@ deploy:
 
 after_deploy:
   - ehco done!
+
+
+notifications:
+  email:
+    recipients:
+      - bgpark82@gmail.com
