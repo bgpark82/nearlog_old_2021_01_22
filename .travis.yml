@@ -9,8 +9,7 @@ branches:
 before_install:
   - cd place
   - echo ready?
-
-script: "./gradlew clean build"
+  - ./gradlew clean build
 
 deploy:
   provider: s3
