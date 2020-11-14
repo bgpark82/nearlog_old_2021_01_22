@@ -7,9 +7,9 @@ branches:
     - master
 
 before_deploy:
-  - "cd place"
-  - "echo ready?"
-  - "./gradlew build"
+  - cd place
+  - echo ready?
+  - ./gradlew build
 
 deploy:
   provider: s3
@@ -21,4 +21,4 @@ deploy:
   local_dir: /build/libs
 
 after_deploy:
-  - "ehco done!"
+  - ehco done!
