@@ -6,12 +6,19 @@ branches:
   only:
     - master
 
-before_install:
-  - cd place
-  - ./gradlew build
+before_deploy:
+  - "cd place"
+  - "echo ready?"
+  - "./gradlew build"
 
 deploy:
   provider: s3
   access_key_id: "AKIARH7J7IJU3QSD2FDP"
   secret_access_key: "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"
   bucket: "bgpark-update-test"
+  skip_cleanup: true
+  region: ap-northeast-2
+  local_dir: /build/libs
+
+after_deploy:
+  - "ehco done!"
