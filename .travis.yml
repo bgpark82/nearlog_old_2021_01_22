@@ -40,7 +40,6 @@ deploy:
 after_deploy:
   - ehco done!
 
-
 notifications:
   email:
     recipients:
