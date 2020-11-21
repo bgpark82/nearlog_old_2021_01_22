@@ -1,14 +1,12 @@
 package com.nearlog.place.domain.photo;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@ToString
 public class Photo {
 
     @Id
@@ -23,7 +21,7 @@ public class Photo {
     @Embedded
     private Image image;
 
-    public static enum Type {
+    public enum Type {
         image,
     }
 
@@ -50,7 +48,7 @@ public class Photo {
     @Getter
     @Embeddable
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    private static class Image {
+    public static class Image {
         private Integer width;
         private Integer height;
         private String filename;

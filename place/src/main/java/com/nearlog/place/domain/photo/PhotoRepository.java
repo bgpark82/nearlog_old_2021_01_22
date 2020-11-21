@@ -2,6 +2,7 @@ package com.nearlog.place.domain.photo;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
@@ -11,7 +12,8 @@ public class PhotoRepository {
 
     private final EntityManager em;
 
-    private Long save(Photo photo) {
+    @Transactional
+    public Long save(Photo photo) {
         em.persist(photo);
         return photo.getId();
     }

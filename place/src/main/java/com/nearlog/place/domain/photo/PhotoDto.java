@@ -23,7 +23,7 @@ public class PhotoDto {
 
         private Double timestamp;
 
-        private Type type;
+        private String type;
 
         private String groupName;
 
@@ -41,7 +41,7 @@ public class PhotoDto {
         private String uri;
 
         @Builder
-        public Save(Double timestamp, Type type, String groupName, Double altitude, Double longitude, Double latitude, Double heading, Double speed, Integer width, Integer height, String filename, Integer fileSize, Double playableDuration, String uri) {
+        public Save(Double timestamp, String type, String groupName, Double altitude, Double longitude, Double latitude, Double heading, Double speed, Integer width, Integer height, String filename, Integer fileSize, Double playableDuration, String uri) {
             this.timestamp = timestamp;
             this.type = type;
             this.groupName = groupName;
@@ -57,27 +57,29 @@ public class PhotoDto {
             this.playableDuration = playableDuration;
             this.uri = uri;
         }
-    }
 
-    public static enum Type {
-        image
-    }
-
-    @ToString
-    @Getter
-    public static class Location {
-
-    }
-
-    @ToString
-    @Getter
-    public static class Image {
-        private Integer width;
-        private Integer height;
-        private String filename;
-        private Integer fileSize;
-        private Double playableDuration;
-        private String uri;
+        public Photo toEntity() {
+            return Photo.builder()
+                    .type(Photo.Type.valueOf(this.type))
+                    .timestamp(this.timestamp)
+                    .groupName(this.groupName)
+                    .location(Photo.Location.builder()
+                        .altitude(this.altitude)
+                        .longitude(this.longitude)
+                        .heading(this.heading)
+                        .latitude(this.latitude)
+                        .speed(this.speed)
+                        .build()
+                    ).image(Photo.Image.builder()
+                        .filename(this.filename)
+                        .fileSize(this.fileSize)
+                        .height(this.height)
+                        .playableDuration(this.playableDuration)
+                        .uri(this.uri)
+                        .width(this.width)
+                        .build()
+                    ).build();
+        }
     }
 
     public static class PlaceDtoSaveDeserializer extends JsonDeserializer<PhotoDto.Save> {
@@ -95,7 +97,7 @@ public class PhotoDto {
                     .heading(node.get("location").get("heading").asDouble())
                     .speed(node.get("location").get("speed").asDouble())
                     .timestamp(node.get("timestamp").asDouble())
-                    .type(Type.valueOf(node.get("type").asText()))
+                    .type(node.get("type").asText())
                     .groupName(node.get("group_name").asText())
                     .width(node.get("image").get("width").asInt())
                     .height(node.get("image").get("height").asInt())
