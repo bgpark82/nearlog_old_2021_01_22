@@ -9,7 +9,8 @@ branches:
 before_install:
   - cd place
 
+script:
+  - ./gradlew clean build
+
 notifications:
-  email:
-    recipients:
-      - bgpark82@gmail.com
+  slack: letshadow:l6tgE4ThwuthIXOkqaggHlMO
