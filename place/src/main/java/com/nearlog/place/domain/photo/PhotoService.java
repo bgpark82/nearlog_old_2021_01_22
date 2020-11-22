@@ -11,7 +11,7 @@ public class PhotoService {
     private final PhotoRepository photoRepository;
 
     @Transactional
-    public Long save(Photo photo) {
-        return photoRepository.save(photo);
+    public Long save(PhotoDto.Save photo) {
+        return photoRepository.save(photo.toEntity());
     }
 }

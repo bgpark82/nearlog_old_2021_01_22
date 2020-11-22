@@ -25,9 +25,9 @@ class PhotoServiceTest {
     @Test
     void save_테스트() {
         // given
-        Photo photo = Photo.builder()
+        PhotoDto.Save photo = PhotoDto.Save.builder()
                 .timestamp(1234.0)
-                .type(Photo.Type.image)
+                .type("image")
                 .build();
 
         // when
