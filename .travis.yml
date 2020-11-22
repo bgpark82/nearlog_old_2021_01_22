@@ -6,6 +6,9 @@ branches:
   only:
     - feature/NEAR-10
 
+before_install:
+  - cd place
+
 notifications:
   email:
     recipients:
