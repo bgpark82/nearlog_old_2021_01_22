@@ -20,7 +20,7 @@ script:
 before_deploy:
   - zip -r nearlog *
   - mkdir -p deploy
-  - mv nearlog.zip deploy
+  - mv nearlog.zip deploy/nearlog.zip
 
 deploy:
   - provider: s3
@@ -29,6 +29,7 @@ deploy:
     bucket: $S3_BUCKET
     region: ap-northeast-2
     skip_cleanup: true
+    local_dir: deploy
     on:
       all_branches: true
 
