@@ -5,5 +5,5 @@ files:
     destination: /home/ec2-user/app/build/
 hooks:
   AfterInstall:
-    - location: execute-deploy.sh
+    - location: /home/ec2-user/app/build/execute-deploy.sh
       timeout: 180
