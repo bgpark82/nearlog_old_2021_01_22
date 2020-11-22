@@ -27,9 +27,10 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: $S3_BUCKET
-    region: ap-northeast-2
     skip_cleanup: true
     local_dir: deploy
+    region: ap-northeast-2
+    wait-until-deployed: true
     on:
       all_branches: true
 
@@ -40,6 +41,10 @@ deploy:
     key: deploy/nearlog.zip
     application: nearlog-deploy
     deployment_group: nearlog-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      all_branches: true
 
 notifications:
   slack: letshadow:l6tgE4ThwuthIXOkqaggHlMO
