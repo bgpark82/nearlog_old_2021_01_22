@@ -33,5 +33,13 @@ deploy:
     on:
       all_branches: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: $S3_BUCKET
+    key: deploy/nearlog.zip
+    application: nearlog-deploy
+    deployment_group: nearlog-group
+
 notifications:
   slack: letshadow:l6tgE4ThwuthIXOkqaggHlMO
