@@ -9,6 +9,11 @@ branches:
 before_install:
   - cd place
 
+cache:
+  directories:
+    - $HOME/.m2/repository
+    - $HOME/.gradle
+
 script:
   - ./gradlew clean build
 
