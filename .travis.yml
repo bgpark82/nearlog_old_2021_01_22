@@ -17,6 +17,11 @@ cache:
 script:
   - ./gradlew clean build
 
+before_deploy:
+  - zip -r nearlog *
+  - mkdir -p deploy
+  - mv nearlog.zip deploy
+
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY
