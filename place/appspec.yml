@@ -4,3 +4,7 @@ files:
   - source: /
     destination: /home/ec2-user/app/build
     override: yes
+hooks:
+  AfterInstall:
+    - location: execute-deploy.sh
+      timeout: 180
