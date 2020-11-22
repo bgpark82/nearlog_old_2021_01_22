@@ -2,8 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/app/build
-    override: yes
+    destination: /home/ec2-user/app/build/
 hooks:
   AfterInstall:
     - location: execute-deploy.sh
